@@ -15,9 +15,9 @@ public class Animal {
     @Column(name = "animalage")
     private int animalAge;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "foodtypeid")
+    @JoinColumn(name  = "foodtypeid")
     private FoodType foodType;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "cageid")
+    @JoinColumn(name  = "cageid")
     private Cage cage;
 }

@@ -13,12 +13,12 @@ public class Ticket {
     @Column(name = "time")
     private String time;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "ticketcategoryid")
+    @JoinColumn(name  = "ticketcategoryid")
     private TicketCategory ticketCategory;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "employeeid")
+    @JoinColumn(name  = "employeeid")
     private Employee employee;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userid")
+    @JoinColumn(name  = "userid")
     private User user;
 }

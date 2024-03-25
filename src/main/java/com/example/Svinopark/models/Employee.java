@@ -19,9 +19,9 @@ public class Employee {
     @Column(name = "passport")
     private String passport;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "positionid")
+    @JoinColumn(name  = "positionid")
     private Position position;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "areaid")
+    @JoinColumn(name  = "areaid")
     private Area area;
 }

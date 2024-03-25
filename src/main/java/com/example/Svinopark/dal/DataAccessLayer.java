@@ -403,5 +403,53 @@ public class DataAccessLayer {
         List<Cage> resultList = session.createQuery(query).getResultList();
         return resultList;
     }
+    public void createUser(User newUser) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.persist(newUser);
+        session.getTransaction().commit();
+        if (session != null) {
+            session.close();
+        }
+    }
+    public void deleteUser(Long id) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        User user = session.get(User.class, id);
+        session.remove(user);
+        session.getTransaction().commit();
+        if (session != null) {
+            session.close();
+        }
+    }
+    public void updateUser(Long id, User updatedUser){
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        User user = session.get(User.class, id);
+        user.setUserName(updatedUser.getUserName());
+        user.setUserAge(updatedUser.getUserAge());
+        session.merge(user);
+        session.getTransaction().commit();
+    }
+    public User getUser(Long id) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        User user = session.get(User.class, id);
+        session.getTransaction().commit();
+        if (session != null) {
+            session.close();
+        }
+        return user;
+    }
+    public List<User> getUsers(){
+        session = sessionFactory.openSession();
+        session.getTransaction().begin();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root);
+        List<User> resultList = session.createQuery(query).getResultList();
+        return resultList;
+    }
 
 }

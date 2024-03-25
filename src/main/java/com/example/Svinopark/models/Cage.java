@@ -14,5 +14,5 @@ public class Cage {
     private int size;
     @ManyToOne
     @JoinColumn(name = "foodtypeid")
-    private Area area;
+    private FoodType foodType;
 }

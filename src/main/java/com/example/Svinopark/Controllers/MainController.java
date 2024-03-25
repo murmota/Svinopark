@@ -204,6 +204,29 @@ public class MainController {
     public ResponseEntity getCages(){
         return ResponseEntity.ok(dataAccessLayer.getCages());
     }
+    @PostMapping("create/user/")
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        dataAccessLayer.createUser(user);
+        return ResponseEntity.ok("PABEDA!");
+    }
+    @DeleteMapping("delete/user/{id}")
+    public ResponseEntity deleteUserById(@PathVariable("id") long id) {
+        dataAccessLayer.deleteUser(id);
+        return ResponseEntity.ok("User номер " + id + " больше не Hru");
+    }
+    @PostMapping("update/user/{id}")
+    public ResponseEntity updateUserById(@PathVariable("id") long id, @RequestBody User updatedUser) {
+        dataAccessLayer.updateUser(id, updatedUser);
+        return ResponseEntity.ok("");
+    }
+    @GetMapping("get/user/{id}")
+    public ResponseEntity getUserById(@PathVariable("id") long id) {
+        return ResponseEntity.ok(dataAccessLayer.getUser(id));
+    }
+    @GetMapping("get/users/")
+    public ResponseEntity getUsers(){
+        return ResponseEntity.ok(dataAccessLayer.getUsers());
+    }
 
 }
 //переписывать текст с доски это тяжело...
