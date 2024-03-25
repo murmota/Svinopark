@@ -1,5 +1,4 @@
 package com.example.Svinopark.dal;
-
 import com.example.Svinopark.models.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -8,10 +7,7 @@ import lombok.Getter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.swing.*;
 import java.util.List;
-
 
 @Getter
 public class DataAccessLayer {
@@ -451,5 +447,7 @@ public class DataAccessLayer {
         List<User> resultList = session.createQuery(query).getResultList();
         return resultList;
     }
+
+
 
 }

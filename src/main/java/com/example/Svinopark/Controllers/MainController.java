@@ -1,5 +1,4 @@
 package com.example.Svinopark.Controllers;
-
 import com.example.Svinopark.dal.DataAccessLayer;
 import com.example.Svinopark.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
