@@ -9,7 +9,7 @@ import lombok.Data;
 public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int positionId;
+    private Long positionId;
     @Column(name = "positionname")
     private String positionName;
 }

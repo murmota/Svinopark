@@ -9,7 +9,7 @@ import lombok.Data;
 public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int ticketId;
+    private Long ticketId;
     @Column(name = "time")
     private String time;
     @ManyToOne
@@ -18,4 +18,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(referencedColumnName = "employeeid")
     private Employee employee;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "userid")
+    private User user;
 }

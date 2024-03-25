@@ -9,7 +9,7 @@ import lombok.Data;
 public class Cage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int cageId;
+    private Long cageId;
     @Column(name = "animalage")
     private int size;
     @ManyToOne

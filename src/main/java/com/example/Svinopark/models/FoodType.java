@@ -9,7 +9,7 @@ import lombok.Data;
 public class FoodType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int foodTypeId;
+    private Long foodTypeId;
     @Column(name = "foodtypename")
     private String foodTypeName;
 }

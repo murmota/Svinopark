@@ -9,7 +9,7 @@ import lombok.Data;
 public class Area {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int areaId;
-    @Column(name = "areaname")
+    private Long areaId;
+    @Column(name = "areaName")
     private String areaName;
 }

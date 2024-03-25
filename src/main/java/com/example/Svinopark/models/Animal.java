@@ -9,7 +9,7 @@ import lombok.Data;
 public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int animalId;
+    private Long animalId;
     @Column(name = "animalname")
     private String animalName;
     @Column(name = "animalage")

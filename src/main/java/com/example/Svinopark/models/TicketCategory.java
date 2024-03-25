@@ -9,7 +9,7 @@ import lombok.Data;
 public class TicketCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int ticketCategoryId;
+    private Long ticketCategoryId;
     @Column(name = "tickettype")
     private String ticketType;
     @Column(name = "price")
