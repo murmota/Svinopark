@@ -10,7 +10,7 @@ public class Cage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long cageId;
-    @Column(name = "animalage")
+    @Column(name = "size")
     private int size;
     @ManyToOne
     @JoinColumn(name = "foodtypeid")

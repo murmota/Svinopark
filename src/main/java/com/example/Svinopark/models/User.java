@@ -14,4 +14,6 @@ public class User {
     private String userName;
     @Column(name = "userAge")
     private int userAge;
+    @Column(name = "role")
+    private String role;
 }

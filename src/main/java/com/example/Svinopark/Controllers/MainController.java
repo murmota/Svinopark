@@ -1,21 +1,34 @@
 package com.example.Svinopark.Controllers;
 import com.example.Svinopark.dal.DataAccessLayer;
 import com.example.Svinopark.models.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/")
 public class MainController {
     private final DataAccessLayer dataAccessLayer;
-
     @Autowired
     public MainController(DataAccessLayer dataAccessLayer) {
         this.dataAccessLayer = dataAccessLayer;
     }
 
+    @GetMapping("/hello")
+    public void hello(){
+        log.info("Gracias Senior Pumba");
+    }
+    @GetMapping("/user")
+    public void user(){
+        log.info("Gracias Senior user");
+    }
+    @GetMapping("/admin")
+    public void admin(){
+        log.info("Gracias Senior admin");
+    }
     @PostMapping("create/animal/")
     public ResponseEntity<String> createAnimal(@RequestBody Animal animal) {
         dataAccessLayer.createAnimal(animal);
@@ -226,6 +239,5 @@ public class MainController {
     public ResponseEntity getUsers(){
         return ResponseEntity.ok(dataAccessLayer.getUsers());
     }
-
-}
+   }
 //переписывать текст с доски это тяжело...

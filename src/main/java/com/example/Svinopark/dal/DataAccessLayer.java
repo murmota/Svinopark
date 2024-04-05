@@ -447,7 +447,4 @@ public class DataAccessLayer {
         List<User> resultList = session.createQuery(query).getResultList();
         return resultList;
     }
-
-
-
 }
