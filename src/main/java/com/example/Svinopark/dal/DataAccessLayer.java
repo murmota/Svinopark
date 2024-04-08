@@ -472,7 +472,7 @@ public class DataAccessLayer {
         session = sessionFactory.openSession();
         session.getTransaction().begin();
         Query query = session
-                .createQuery("FROM User where username = :username")
+                .createQuery("FROM User where userName = :username")
                 .setParameter("username", name);
         User userFrom = (User) query.uniqueResult();
         if (userFrom == null) {
