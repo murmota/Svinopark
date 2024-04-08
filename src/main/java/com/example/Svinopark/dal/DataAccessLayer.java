@@ -6,6 +6,7 @@ import jakarta.persistence.criteria.Root;
 import lombok.Getter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
@@ -446,5 +447,37 @@ public class DataAccessLayer {
         query.select(root);
         List<User> resultList = session.createQuery(query).getResultList();
         return resultList;
+    }
+
+    public String newUserToDatabase(User user) {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        String name = user.getUserName();
+
+        Query query = session
+                .createQuery("FROM User where userName = :username")
+                .setParameter("username", name);
+        User userFrom = (User) query.uniqueResult();
+
+        if (userFrom != null) {
+            return "Выберите другое имя";
+        }
+        session.persist(user);
+        session.getTransaction().commit();
+        session.close();
+        return "Pabeda)";
+    }
+
+    public User getUserFromDatabaseByUsername(String name) {
+        session = sessionFactory.openSession();
+        session.getTransaction().begin();
+        Query query = session
+                .createQuery("FROM User where username = :username")
+                .setParameter("username", name);
+        User userFrom = (User) query.uniqueResult();
+        if (userFrom == null) {
+            return null;
+        }
+        return userFrom;
     }
 }
