@@ -1,5 +1,8 @@
-<!-- <script >
+
+
+<script >
 export default{
+  name:'HomePage',
   data(){
     return{
 
@@ -8,28 +11,27 @@ export default{
   methods:{
     
   }
-
-  
 }
+
 </script>
 
 <template>
 <div class="All">
   <header>
-    
+    <div class="First">
+      <h1 class="tilte">Welcom Svinopark</h1>
+    </div>
   </header>
   <main>
-    <div class="reg_window">
-        <div class="reg_input">
-            <input type="text" placeholder="name">
-            <input type="password" placeholder="password">
-            <input type="email" placeholder="email">
-        </div>
-        <div class="reg_Button">
-            <button class="regBT" @click="">
-                отправить
-            </button>
-        </div>
+    <div class="Reg_log">
+      <div class="log">
+      <button class="logBT"  @click="">Войти</button>
+    </div>
+    <div class ="reg">
+      <button class="regBT" @click="">
+        зарегистрироваится
+      </button>
+    </div>
     </div>
     
   </main>
@@ -50,8 +52,19 @@ export default{
   
 
 }
-
-
+.logBT{
+  background: rgb(255,255,255);
+background: linear-gradient(241deg, rgba(0,254,255,1) 0%, rgba(252,0,255,1) 100%);
+  animation: gradient 5s infinite linear;
+  background-size: 400%;
+  width: auto;
+  height: auto;
+  /* background-color: rgb(203, 148, 255); */
+  color: aliceblue;
+  border-color: azure;
+  border-radius: 35px;
+  font-size: 35px;
+}
 .regBT{
   background: rgb(255,255,255);
   background: linear-gradient(241deg, rgba(0,254,255,1) 0%, rgba(252,0,255,1) 100%);
@@ -68,14 +81,16 @@ export default{
 
 }
 
-.reg_window{
+.First{
   width: 100%;
   height: 100%;
   margin-top: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  font-size: 50px;
+  color: blueviolet;
+  font-weight:bold;
 }
 
 .Reg_log{
@@ -115,4 +130,6 @@ export default{
     }
   }
 
-</style> -->
+</style>
+
+

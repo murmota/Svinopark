@@ -1,43 +1,64 @@
 <script >
+import Vue from 'vue';
 import api from './api/api.js';
+import HomePage from './components/HomePage.vue';
+Vue.component('HomePage', HomePage)
 export default{
+  components:{
+    HomePage
+  },
   data(){
+    
     return{
       users: [],
+      userName: '',
+      userAge: 0,
+      userPassword: ''
       
     }
   },
   methods:{
     
-    sendData(){
-
-    }
-    
-  },
-  mounted() {
-    api.get('unauthorized/get/users/')
-      .then(response => {
-        this.users = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    
-  },
-  mounted(){
-    const newUser = {
-      userName: '',
-      userAge: '',
-      userPass: ''
+    async signupUser() {
+      const newUser = {
+        userName: this.userName,
+        age: this.userAge,
+        password: this.userPassword
       }
-    api.post('/auth/signup', newUser)
-      .then(response => {
-        this.users = response.data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+      try {
+        const response = await api.post('/auth/signup', newUser);
+        console.log('Успешно зарегистрирован:',newUser);
+      } catch (error) {
+        console.log(this.userName);
+      }
+    },
+    
+    
+  },
+  // created() {
+  //   api.get('unauthorized/get/users/')
+  //     .then(response => {
+  //       this.users = response.data;
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+    
+  // },
+  // created(){
+  //   const newUser = {
+  //     userName: '',
+  //     userAge: '',
+  //     userPass: ''
+  //     }
+  //   api.post('/auth/signup', newUser)
+  //     .then(response => {
+  //       this.users = response.data;
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }
 
   
 }
@@ -46,18 +67,23 @@ export default{
 <template>
 <div class="All">
   <header>
-    
+    <HomePage></HomePage>
+    <li><router-link :to="{name:'home'}">Главная</router-link></li>
+    <router-view/> 
   </header>
   <main>
     <div class="reg_window">
         <div class="reg_input">
             <input type="text" v-model="userName" placeholder="name">
             <input type="number" v-model="userAge" placeholder="age">
-            <input type="password" v-model="userPass" placeholder="password">
+            <input type="password" v-model="userPassword" placeholder="password">
             
         </div>
         <div class="reg_Button">
-            <button class="regBT" @click="sendData()">
+            <button class="regBT" @click="signupUser()">
+                отправить
+            </button>
+            <button class="regBT" @click="signupUser()">
                 отправить
             </button>
         </div>
@@ -65,14 +91,30 @@ export default{
     
   </main>
   <footer>
-    <p>{{ users }}</p>
-    <button @click="mounted()">получить</button>
+   
   </footer>
 </div>
   
 </template>
 
+
+
+
+
 <style scoped>
+input{
+  margin-bottom: 1vh;
+  background: rgb(255,255,255);
+  background: linear-gradient(241deg, rgb(239, 161, 255) 0%, rgb(255, 255, 255) 100%);
+  animation: gradient 2s infinite linear;
+  background-size: 400%;
+  height: 5vh;
+  width: 30vh;
+  border-color:rgba(252,0,255,1); 
+  border-radius: 15px;
+  align-items: center;
+  font-size: 32px;
+}
 .All{
   display: column;
     align-items: center;
@@ -103,7 +145,7 @@ export default{
 .reg_window{
   width: 100%;
   height: 100%;
-  margin-top: 20%;
+  margin-top: 15%;
   display: flex;
   justify-content:center;
   align-items: center;
