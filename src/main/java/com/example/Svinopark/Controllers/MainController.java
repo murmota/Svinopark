@@ -103,7 +103,8 @@ public class MainController {
 
     @GetMapping("get/users/")
     public ResponseEntity getUsers(){
-        return ResponseEntity.ok(dataAccessLayer.getUsers());
+        System.out.println("pop");
+        return ResponseEntity.ok(dataAccessLayer.getUsers())  ;
     }
    }
 //переписывать текст с доски это тяжело...
