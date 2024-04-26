@@ -9,7 +9,12 @@ export default{
     }
   },
   methods:{
-    
+    page_reg(){
+      window.location.href="/reg"
+    },
+    page_log(){
+      window.location.href="/log"
+    }
   }
 }
 
@@ -25,10 +30,10 @@ export default{
   <main>
     <div class="Reg_log">
       <div class="log">
-      <button class="logBT"  @click="">Войти</button>
+      <button class="logBT"  @click="page_log()">Войти</button>
     </div>
     <div class ="reg">
-      <button class="regBT" @click="">
+      <button class="regBT" @click="page_reg()" href="/reg">
         зарегистрироваится
       </button>
     </div>
