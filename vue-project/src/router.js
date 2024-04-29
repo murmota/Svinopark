@@ -4,6 +4,8 @@ import RegPage from "./components/RegPage.vue";
 import LogPage from "./components/LogPage.vue";
 import AuthMain from './components/AuthMain.vue';
 
+
+
 export default  createRouter({
     history:createWebHistory(),
     routes:[
@@ -11,6 +13,7 @@ export default  createRouter({
         {path:"/reg",component:RegPage},
         {path:"/log",component:LogPage},
         {path:"/auth/main",component:AuthMain},
+        
 
     ]
 })

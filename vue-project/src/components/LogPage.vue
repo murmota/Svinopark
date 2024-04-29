@@ -9,8 +9,8 @@ export default{
     return{
       users: [],
       userName: '',
-      errorMessage: '',
-      
+      errorMessage: "",
+      responseData: null,
       userPassword: ''
       
     }
@@ -23,14 +23,23 @@ export default{
         password: this.userPassword
       }
       try {
-        const response = await api.post('/auth/signin', User);
-        .then(function (response){
-        this.somevar = response ;
-        console.log(response.data.foo);
+        const response = await api.post('/auth/signin', User)
+        .then(response => {
+          this.responseData = response.data;
+          this.errorMessage = response.data.message;
+          window.location.href ="/auth/main";
         })
-        console.log('Успешно авторизован:',User);
-        window.location.href ="#/main";
-      } catch (error) {
+        .catch(error => {
+          console.error(error);
+          this.errorMessage = error.response.status;
+        });
+        console.log(' не авторизован:',User);
+        
+        
+        
+        }
+        
+       catch (error) {
         
       }
       
@@ -70,11 +79,12 @@ export default{
 <template>
 <div class="All">
   <header>
-    <h2>{{ errorMessage }}</h2>
+    
   </header>
   <main>
     <div class="reg_window">
         <div class="reg_input">
+          <h2 class="error">{{ errorMessage }}</h2>
             <input type="text" v-model="userName" placeholder="name">
             
             <input type="password" v-model="userPassword" placeholder="password">
@@ -101,6 +111,10 @@ export default{
 
 
 <style scoped>
+.error{
+  font-size: 28px;
+  color: red;
+}
 input{
   margin-bottom: 1vh;
   background: rgb(255,255,255);

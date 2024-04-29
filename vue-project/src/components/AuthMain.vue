@@ -1,11 +1,13 @@
 
 
 <script >
+
+import Header from './Header.vue'
 export default{
-  name:'HomePage',
+  
   data(){
     return{
-        tilte: "ХУЙ"
+        tilte: ""
     }
   },
   methods:{
@@ -21,13 +23,16 @@ export default{
 </script>
 
 <template>
+  
 <div class="All">
   <header>
+    <Header></Header>
+    
+  </header>
+  <main>
     <div class="First">
       <h1 class="tilte">Welcom Svinopark {{ tilte }}</h1>
     </div>
-  </header>
-  <main>
     <div class="Reg_log">
       <div class="log">
       <button class="logBT"  @click="page_log()">Войти</button>
@@ -38,9 +43,7 @@ export default{
     </div>
     
   </main>
-  <footer>
-    
-  </footer>
+  
 </div>
   
 </template>
