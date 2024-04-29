@@ -9,6 +9,7 @@ export default{
     return{
       users: [],
       userName: '',
+      errorMessage: '',
       
       userPassword: ''
       
@@ -23,10 +24,16 @@ export default{
       }
       try {
         const response = await api.post('/auth/signin', User);
+        .then(function (response){
+        this.somevar = response ;
+        console.log(response.data.foo);
+        })
         console.log('Успешно авторизован:',User);
+        window.location.href ="#/main";
       } catch (error) {
-        console.log(this.userName);
+        
       }
+      
     },
     
     
@@ -63,7 +70,7 @@ export default{
 <template>
 <div class="All">
   <header>
-    
+    <h2>{{ errorMessage }}</h2>
   </header>
   <main>
     <div class="reg_window">

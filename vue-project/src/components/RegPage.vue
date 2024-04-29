@@ -1,6 +1,6 @@
 <script >
 
-import api from './api/api.js';
+import api from "./api/api.js";
 
 export default{
   
@@ -10,7 +10,8 @@ export default{
       users: [],
       userName: '',
       userAge: 0,
-      userPassword: ''
+      userPassword: '',
+      errorMessage: ''
       
     }
   },
@@ -25,7 +26,15 @@ export default{
       try {
         const response = await api.post('/auth/signup', newUser);
         console.log('Успешно зарегистрирован:',newUser);
-      } catch (error) {
+        window.location.href ="/log";
+      } 
+      catch (error){
+        if (!response.status === 401) {
+          this.errorMessage ="Ошибка на стороне сервера!!!"
+        }
+        else{
+          this.errorMessage ="Ошибка авторизации! Проверьте логин и пароль"
+        }
         console.log(this.userName);
       }
     },
@@ -64,7 +73,7 @@ export default{
 <template>
 <div class="All">
   <header>
-    
+    <h2>{{ errorMessage }}</h2>
   </header>
   <main>
     <div class="reg_window">
@@ -95,6 +104,11 @@ export default{
 
 
 <style scoped>
+header{
+  font-size: 40px;
+  color: red;
+
+}
 input{
   margin-bottom: 1vh;
   background: rgb(255,255,255);
