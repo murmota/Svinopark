@@ -2,7 +2,7 @@
 
 <script >
 
-import Header from './Header.vue'
+import Header_comp from './Head_Copp.vue';
 export default{
   
   data(){
@@ -26,8 +26,8 @@ export default{
   
 <div class="All">
   <header>
-    <Header></Header>
     
+    <Header_comp />  
   </header>
   <main>
     <div class="First">
